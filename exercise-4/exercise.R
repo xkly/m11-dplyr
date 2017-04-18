@@ -7,25 +7,28 @@ library(dplyr)
 
 # The data.frame flights should now be accessible to you.  View it, 
 # and get some basic information about the number of rows/columns
-
+View(flights)
+rows <- nrow(flights)
+columns <- ncol(flights)
 
 # Add a column that is the amount of time gained in the air (`arr_delay` - `dep_delay`)
-
+flights <- mutate(flights, gained = arr_delay - dep_delay)
 
 # Sort your data.frame desceding by the column you just created
-
+flights <- arrange(desc(flights, gained))
 
 # Try doing the last 2 steps in a single operation using the pipe operator
-
+flights <- mutate(flights, gain = arr_delay - dep_delay) %>% arrange(desc(gain))
+flights$gain <- NULL
 
 # Make a histogram of the amount of gain using the `hist` command
-
+hist(flights$gain)
 
 # On average, did flights gain or lose time?
-
+ave(flights$gain)
 
 # Create a data.frame that is of flights headed to seatac ('SEA'), 
-
+flights <- mutate(flights, SEA)
 
 # On average, did flights to seatac gain or loose time?
 
