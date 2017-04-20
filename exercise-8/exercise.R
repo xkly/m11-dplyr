@@ -36,7 +36,7 @@ most.prizes <- Pulitzer.Prize.Change %>%
 # This publication should have Pulitzer prizes won a minimum of 5 Pulitzers, as well as the biggest decrease in circulation
 over.5.decrease <- Pulitzer.Prize.Change %>%
   filter(Pulitzer.Prize.Winners.and.Finalists..2004.2014 >= 5) %>%
-  # we're comparing char though?
+  # we're comparing char though
   filter(Change.in.Daily.Circulation..2004.2013 == min(Change.in.Daily.Circulation..2004.2013)) %>%
   select(Newspaper)
 
